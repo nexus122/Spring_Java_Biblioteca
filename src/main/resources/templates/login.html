@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="${titulo}"></title>
+<!-- Pico Css -->
+<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+
+</head>
+<body>
+	<main class="container">
+		<h1 th:text="${titulo}"></h1>
+		<form action="/" method="post">
+			<div>
+				<label for="nombre">Login</label>
+				<input type="text" name="nombre" value="edu">
+			</div>
+			<div>
+				<label for="nombre">Password</label>
+				<input type="password" name="password" value="edu">
+			</div>
+			
+			<input type="submit" name="submit" value="Entrar">
+			
+		</form>
+	</main>
+</body>
+</html>

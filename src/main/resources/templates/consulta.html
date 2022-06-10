@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Listado de libros</title>
+
+<!-- Pico Css -->
+<link rel="stylesheet"
+	href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+</head>
+<body>
+	<main class="container">
+		<h1>LISTADO DE LIBROS</H1>
+		<table border=1>
+			<thead>
+				<tr>
+					<th>Id
+					<th>Titulo
+					<th>Autor
+					<th>Editorial
+					<th>Fecha
+					<th>Tematica
+					<th>Borrar
+					<th>Modificar
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="libro:${libros}">
+					<td><span th:text="${libro.id}"></span></td>
+					<td><span th:text="${libro.titulo}"></span></td>
+					<td><span th:text="${libro.autor}"></span></td>
+					<td><span th:text="${libro.editorial}"></span></td>
+					<td><span th:text="${libro.fecha}"></span></td>
+					<td><span th:text="${libro.tematica}"></span></td>
+					<!--  Borrado  -->
+					<td><a th:href="@{/borrado/}+${libro.id}">Borrar Libro</a></td>
+					<td><a th:href="@{/modificar/}+${libro.id}">Modificar Libro</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<form th:action="${action}" method="post">
+		<h1>Formulario para insertar libros</h1>
+			<div class="grid">
+				<div>
+					<label for="id">ID</label> <input type="text" name="id" th:value="${libro?.id}">
+				</div>
+				<div>
+					<label for="titulo">TITULO</label> <input type="text" name="titulo" th:value="${libro?.titulo}">
+				</div>
+			</div>
+
+			<div class="grid">
+				<div>
+					<label for="autor">AUTOR</label> <input type="text" name="autor" th:value="${libro?.autor}">
+				</div>
+				<div>
+					<label for="editorial">EDITORIAL</label> <input type="text"
+						name="editorial" th:value="${libro?.editorial}">
+				</div>
+			</div>
+			<div class="grid">
+				<div>
+					<label for="fecha">FECHA</label> 
+					<input type="text" name="fecha" th:value="${libro?.fecha}">
+				</div>
+				<div>
+					<label for="tematica">TEMATICA</label> <input type="text"
+						name="tematica" th:value="${libro?.tematica}">
+				</div>
+			</div>
+			<input type="submit" name="submit" value="Insertar Libro">
+		</form>
+	</main>
+</body>
+</html>
